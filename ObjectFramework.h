@@ -3,11 +3,27 @@
 
 #include <list>
 #include <string>
+#include <hash_map>
 #include <cinttypes>
 #include "EngMath.h"
 
 typedef std::string string;
 typedef unsigned char byte;
+
+// ==================================================================
+// PROGRAM STATE
+// ==================================================================
+
+struct prog_state
+{
+	/*
+	*	This table keeps a reference to all pointers created in the
+	*	lifecycle of the program as well as a counter of all the
+	*	references to them, if the counter hits 0, the object is
+	*	destroyed.
+	*/
+	std::hash_map<void*, uint32_t> ptr_table;
+};
 
 // ==================================================================
 // OBJECT
@@ -47,5 +63,9 @@ public:
 	virtual Vector_2D getVelocity() final;
 	virtual byte getLayer() final;
 };
+
+inline Vector_2D Actor::getPosition() { return position; }
+inline Vector_2D Actor::getVelocity() { return velocity; }
+inline byte Actor::getLayer() { return layer; }
 
 #endif
