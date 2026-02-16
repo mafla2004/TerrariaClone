@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ObjectFramework.h">
+    <ClInclude Include="EngineBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EngMath.h">
