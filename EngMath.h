@@ -25,8 +25,12 @@ public:
 	Vector_2D& operator-=(const Vector_2D&);
 	Vector_2D& operator*=(double);
 	Vector_2D& operator/=(double);
+	
+	Vector_2D operator-();
+	Vector_2D operator+();
 
 	Vector_2D(double _x = 0.0, double _y = 0.0) : x(_x), y(_y) {}
+	Vector_2D(const Vector_2D& v) : x(v.x), y(v.y) {}
 	~Vector_2D() = default;
 };
 
@@ -44,3 +48,6 @@ inline Vector_2D& Vector_2D::operator+=(const Vector_2D& v) { x += v.x; y += v.y
 inline Vector_2D& Vector_2D::operator-=(const Vector_2D& v) { x -= v.x; y -= v.y; return *this; }
 inline Vector_2D& Vector_2D::operator*=(double n) { x *= n; y *= n; return *this; }
 inline Vector_2D& Vector_2D::operator/=(double n) { x /= n; y /= n; return *this; }
+
+inline Vector_2D Vector_2D::operator-() { return Vector_2D(-x, -y); }
+inline Vector_2D Vector_2D::operator+() { return Vector_2D(*this); }
